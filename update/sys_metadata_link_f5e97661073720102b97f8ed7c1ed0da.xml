@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>12ac5b610b221010ef49eaf1a3673a31</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-08-10 21:41:51</sys_created_on>
+        <sys_id>12ac5b610b221010ef49eaf1a3673a31</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_kmf_crypto_caller_policy.used.nobody</sys_name>
+        <sys_package display_value="ServiceNow Key Management Framework" source="sn_kmf">c515f25b53332300cd1eddeeff7b126e</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="ServiceNow Key Management Framework">c515f25b53332300cd1eddeeff7b126e</sys_scope>
+        <sys_security_acl display_value="sys_kmf_crypto_caller_policy.used">2b7cd3610b221010ef49eaf1a3673acc</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_12ac5b610b221010ef49eaf1a3673a31</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-08-10 21:41:51</sys_updated_on>
+        <sys_user_role display_value="nobody" name="nobody">b05940500a0a0aa70090a4893f6ff35d</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-04-28 18:39:20</sys_created_on>
+        <sys_id>f5e97661073720102b97f8ed7c1ed0da</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_kmf_crypto_caller_policy.used.nobody</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_metadata_link_f5e97661073720102b97f8ed7c1ed0da</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-04-28 18:39:20</sys_updated_on>
+        <tablename>sys_security_acl_role</tablename>
+    </sys_metadata_link>
+</record_update>
