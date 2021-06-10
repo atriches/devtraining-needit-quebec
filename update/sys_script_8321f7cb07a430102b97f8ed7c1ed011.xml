@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>incident</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition table="incident">incident_stateCHANGESTO2^assigned_toISNOTEMPTY^EQ<item display_value="In Progress" endquery="false" field="incident_state" goto="false" newquery="false" operator="CHANGESTO" or="false" value="2"/>
+            <item endquery="false" field="assigned_to" goto="false" newquery="false" operator="ISNOTEMPTY" or="false" value=""/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter_condition>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>prov at create incident task</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/ ) {
+    // Add your code here
+
+	var grupo = null;
+    var grUser = new GlideRecord("sys_user_grmember");
+    grUser.addEncodedQuery('user=' + current.getValue('assigned_to'));
+    grUser.query();
+	
+    if (grUser.next()) {
+        grupo = grUser.getValue('group');
+
+    }
+
+    var gr = new GlideRecord("incident_task");
+    gr.initialize();
+    gr.addActiveQuery(); // é igual a gr.addQuery('active',true);
+    gr.addQuery('incident', current.getUniqueValue());
+    gr.addQuery('assigned_to', current.getValue('assigned_to'));
+    gr.query();
+    if (!gr.next()) {
+        gr.setValue('short_description', current.getValue('short_description'));
+        gr.setValue('description', current.getValue('description'));
+        gr.setValue('incident', current.getUniqueValue());
+        gr.setValue('assigned_to', current.getValue('assigned_to'));
+        gr.setValue('assignment_group', grupo);
+        gr.insert();
+    } else {
+        gs.addInfoMessage("Ja existe uma task para esta pessoa");
+        if (gr.getValue('priority') != 1) {
+            gr.setValue('priority', 1);
+            gs.addInfoMessage("a prioridade ja foi elevada");
+        }
+
+        gr.update();
+    }
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-06-09 21:22:08</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>8321f7cb07a430102b97f8ed7c1ed011</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>prov at create incident task</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_script_8321f7cb07a430102b97f8ed7c1ed011</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-06-09 21:56:25</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=8321f7cb07a430102b97f8ed7c1ed011"/>
+</record_update>
